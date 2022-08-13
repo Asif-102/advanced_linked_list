@@ -62,6 +62,23 @@ void makeCycle(Node*& head, int pos)
     temp->next = startNode;
 }
 
+bool detectCycle(Node*& head)
+{
+    Node* slow = head;
+    Node* fast = head;
+
+    while(fast != NULL && fast->next != NULL)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+
+        //Cycle Check
+        if(slow == fast)
+            return true;
+    }
+    return false;
+}
+
 int main(void)
 {
     Node* head = NULL;
@@ -76,5 +93,6 @@ int main(void)
 
     makeCycle(head, 3);
 
-    display(head);
+    cout << detectCycle(head) << endl;
+//    display(head);
 }
