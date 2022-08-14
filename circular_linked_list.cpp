@@ -55,6 +55,44 @@ void insertAtHead(Node*& head, int val)
     head = newNode;
 }
 
+void deleteAthead(Node*& head)
+{
+    Node* temp = head;
+    while(temp->next != head)
+    {
+        temp = temp->next;
+    }
+
+    Node* todelete = head;
+    temp->next = head->next;
+    head = head->next;
+
+    delete todelete;
+}
+
+void deletion(Node*& head, int pos)
+{
+    if(pos == 1)
+    {
+        deleteAthead(head);
+        return;
+    }
+
+    Node* temp = head;
+    int count = 1;
+
+    while(count != pos-1)
+    {
+        temp = temp->next;
+        count++;
+    }
+
+    Node* toDelete = temp->next;
+    temp->next = temp->next->next;
+
+    delete toDelete;
+}
+
 void display(Node*& head)
 {
     if(head == NULL)
@@ -71,6 +109,7 @@ void display(Node*& head)
         temp = temp->next;
     }
     while(temp != head);
+    cout << endl;
 }
 
 int main(void)
@@ -82,6 +121,15 @@ int main(void)
     insertAtTail(head, 40);
 
     insertAtHead(head, 777);
+    insertAtHead(head, 999);
+
+    display(head);
+
+    deletion(head, 2);
+
+    display(head);
+
+    deletion(head, 1);
 
     display(head);
 }
