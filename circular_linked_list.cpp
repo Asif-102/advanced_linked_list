@@ -25,10 +25,13 @@ void insertAtTail(Node*& head, int val)
 
     Node* temp = head;
 
-    while(temp->next != NULL)
+    while(temp->next != NULL && temp->next != head)
+    {
         temp = temp->next;
+    }
 
     temp->next = newNode;
+    newNode->next = head;
 }
 
 void display(Node* head)
@@ -80,8 +83,9 @@ int main(void)
     insertAtTail(head, 30);
     insertAtTail(head, 40);
 
-    makeCircularList(head);
+//    makeCircularList(head);
 
 //    display(head);
     displayCircular(head);
+//    displayCircular(head);
 }
