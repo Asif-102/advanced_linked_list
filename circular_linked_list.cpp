@@ -34,34 +34,11 @@ void insertAtTail(Node*& head, int val)
     newNode->next = head;
 }
 
-void display(Node* head)
+void display(Node*& head)
 {
     if(head == NULL)
         return;
-    while (head != NULL)
-    {
-        cout << head->val;
-        if(head->next != NULL)
-            cout << " -> ";
-        head = head->next;
-    }
-    cout << endl;
-}
 
-void makeCircularList(Node*& head)
-{
-    Node* temp = head;
-
-    while(temp->next != NULL)
-    {
-        temp = temp->next;
-    }
-
-    temp->next = head;
-}
-
-void displayCircular(Node*& head)
-{
     Node* temp = head;
 
     do
@@ -83,9 +60,5 @@ int main(void)
     insertAtTail(head, 30);
     insertAtTail(head, 40);
 
-//    makeCircularList(head);
-
-//    display(head);
-    displayCircular(head);
-//    displayCircular(head);
+    display(head);
 }
